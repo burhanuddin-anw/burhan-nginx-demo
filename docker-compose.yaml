@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8888:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+      - nginx_logs:/var/log/nginx
+      - nginx_cache:/var/cache/nginx
+      - nginx_run:/run
+      - /var/www/html
+
+volumes:
+  nginx_logs:
+  nginx_cache:
+  nginx_run:
